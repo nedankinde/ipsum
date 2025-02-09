@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title default="Ipsum" suffix=" : app">
+      {assigns[:page_title]}
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+    <script src="https://kit.fontawesome.com/70b4d4d48f.js" crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <div class="md:px-8 lg:px-16 xl:px-32">
+      {@inner_content}
+    </div>
+  </body>
+</html>

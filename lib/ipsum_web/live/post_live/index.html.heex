@@ -1,0 +1,46 @@
+All Posts
+<.header>
+  <:actions>
+    <.link patch={~p"/posts/new"}>
+      <.button>New Post</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="posts"
+  rows={@streams.posts}
+  row_click={fn {id, post} -> JS.navigate(~p"/posts/#{post.id}") end}
+>
+  <:col :let={{_id, post}} label="">{post.body}</:col>
+  <:action :let={{id, post}}>
+    <div class="sr-only">
+      <.link navigate={~p"/posts/#{post.id}"}>Show</.link>
+    </div>
+    <%= if (post.user_id == @current_user.id) do %>
+      <.link patch={~p"/posts/#{post.id}/edit"}>Edit</.link>
+    <% end %>
+  </:action>
+  <:action :let={{id, post}}>
+    <%= if (post.user_id == @current_user.id) do %>
+      <.link
+        phx-click={JS.push("delete", value: %{id: post.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.link>
+    <% end %>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="post-modal" show on_cancel={JS.patch(~p"/posts")}>
+  <.live_component
+    module={IpsumWeb.PostLive.FormComponent}
+    id={@post.id}
+    title={@page_title}
+    action={@live_action}
+    post={@post}
+    current_user={@current_user}
+    patch={~p"/posts"}
+  />
+</.modal>

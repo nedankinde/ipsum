@@ -1,0 +1,320 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+    --text: #f3f3f3;
+    --background: #151a1e; /* Black */
+    --contrast: #1c2227; /* Dark Gray */
+    --primary: #2594d7; /* Blue */
+    --primary-light: rgba(37, 148, 215, 0.2);
+    --secondary: #858f98; /* Gray */
+    --secondary-light: rgba(133, 143, 152, 0.2);
+    --teal: #499999;
+    --teal-light: rgba(73, 153, 153, 0.2);
+    --green: #26a178;
+    --green-light: rgba(38, 161, 120, 0.2);
+    --yellow: #d47304;
+    --yellow-light: rgba(212, 115, 4, 0.2);
+    --red: #ea5c68;
+    --red-light: rgba(234, 92, 104, 0.2);
+    --success: var(--green);
+    --warning: var(--yellow);
+    --error: var(--red);
+    --highlight: #38424b;
+    --highlight-shadow: rgba(56, 66, 75, 0.3);
+
+    --gradient-0: linear-gradient(45deg, var(--primary), var(--teal));
+    --gradient-1: linear-gradient(45deg, var(--primary), var(--green));
+    --gradient-2: linear-gradient(45deg, var(--primary), var(--yellow));
+    --gradient-3: linear-gradient(45deg, var(--primary), var(--red));
+    --gradient-4: linear-gradient(45deg, var(--teal), var(--green));
+    --gradient-5: linear-gradient(45deg, var(--teal), var(--yellow));
+    --gradient-6: linear-gradient(45deg, var(--teal), var(--red));
+    --gradient-7: linear-gradient(45deg, var(--green), var(--yellow));
+    --gradient-8: linear-gradient(45deg, var(--green), var(--red));
+    --gradient-9: linear-gradient(45deg, var(--yellow), var(--red));
+    --gradient-10: linear-gradient(90deg, var(--primary), var(--teal));
+    --gradient-11: linear-gradient(90deg, var(--primary), var(--green));
+    --gradient-12: linear-gradient(90deg, var(--primary), var(--yellow));
+    --gradient-13: linear-gradient(90deg, var(--primary), var(--red));
+    --gradient-14: linear-gradient(90deg, var(--teal), var(--green));
+    --gradient-15: linear-gradient(90deg, var(--teal), var(--yellow));
+    --gradient-16: linear-gradient(90deg, var(--teal), var(--red));
+    --gradient-17: linear-gradient(90deg, var(--green), var(--yellow));
+    --gradient-18: linear-gradient(90deg, var(--green), var(--red));
+    --gradient-19: linear-gradient(90deg, var(--yellow), var(--red));
+    --gradient-20: linear-gradient(135deg, var(--primary), var(--teal));
+    --gradient-21: linear-gradient(135deg, var(--primary), var(--green));
+    --gradient-22: linear-gradient(135deg, var(--primary), var(--yellow));
+    --gradient-23: linear-gradient(135deg, var(--primary), var(--red));
+    --gradient-24: linear-gradient(135deg, var(--teal), var(--green));
+    --gradient-25: linear-gradient(135deg, var(--teal), var(--yellow));
+    --gradient-26: linear-gradient(135deg, var(--teal), var(--red));
+    --gradient-27: linear-gradient(135deg, var(--green), var(--yellow));
+    --gradient-28: linear-gradient(135deg, var(--green), var(--red));
+    --gradient-29: linear-gradient(135deg, var(--yellow), var(--red));
+    --gradient-30: linear-gradient(180deg, var(--primary), var(--teal));
+    --gradient-31: linear-gradient(180deg, var(--primary), var(--green));
+    --gradient-32: linear-gradient(180deg, var(--primary), var(--yellow));
+    --gradient-33: linear-gradient(180deg, var(--primary), var(--red));
+    --gradient-34: linear-gradient(180deg, var(--teal), var(--green));
+    --gradient-35: linear-gradient(180deg, var(--teal), var(--yellow));
+    --gradient-36: linear-gradient(180deg, var(--teal), var(--red));
+    --gradient-37: linear-gradient(180deg, var(--green), var(--yellow));
+    --gradient-38: linear-gradient(180deg, var(--green), var(--red));
+    --gradient-39: linear-gradient(180deg, var(--yellow), var(--red));
+    --gradient-40: linear-gradient(225deg, var(--primary), var(--teal));
+    --gradient-41: linear-gradient(225deg, var(--primary), var(--green));
+    --gradient-42: linear-gradient(225deg, var(--primary), var(--yellow));
+    --gradient-43: linear-gradient(225deg, var(--primary), var(--red));
+    --gradient-44: linear-gradient(225deg, var(--teal), var(--green));
+    --gradient-45: linear-gradient(225deg, var(--teal), var(--yellow));
+    --gradient-46: linear-gradient(225deg, var(--teal), var(--red));
+    --gradient-47: linear-gradient(225deg, var(--green), var(--yellow));
+    --gradient-48: linear-gradient(225deg, var(--green), var(--red));
+    --gradient-49: linear-gradient(225deg, var(--yellow), var(--red));
+    --gradient-50: linear-gradient(270deg, var(--primary), var(--yellow));
+    --gradient-51: linear-gradient(270deg, var(--teal), var(--red));
+    --gradient-52: linear-gradient(315deg, var(--green), var(--primary));
+    --gradient-53: linear-gradient(315deg, var(--yellow), var(--teal));
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body {
+    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+select {
+    padding: 0.5em 1em;
+    color: var(--text);
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    filter: brightness(110%);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    filter: brightness(105%);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--secondary);
+    opacity: 0.7;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23858f98' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    appearance: none;
+}
+
+textarea {
+    resize: vertical;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 4px;
+    background: var(--background);
+    border: 1px solid var(--highlight);
+    box-shadow: 0 0px 3px var(--highlight-shadow);
+}
+
+.posts > :first-child .post {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.posts > :last-child .post {
+    border-radius: 0 0 12px 12px;
+}
+
+.post {
+    background: var(--background);
+    border: 1px solid var(--highlight);
+    box-shadow: 0 0px 3px var(--highlight-shadow);
+}
+
+.button {
+    border-radius: 4px;
+    color: var(--secondary);
+    background: var(--background);
+    border: 1px solid var(--highlight);
+    box-shadow: 0 0px 3px var(--highlight-shadow);
+    display: block;
+    min-width: fit-content;
+    line-height: 2em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button:hover {
+    filter: brightness(120%);
+    transition: all 0.2s ease;
+}
+
+.button:active {
+    transition: all 0.2s ease;
+    filter: brightness(150%);
+}
+
+.button-primary {
+    background: transparent;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0px 3px var(--primary-light);
+    color: var(--primary);
+}
+
+.button-primary:hover {
+    color: var(--background);
+    background: var(--primary);
+}
+
+.button-secondary {
+    background: transparent;
+    border: 1px solid var(--secondary);
+    box-shadow: 0 0px 3px var(--secondary-light);
+    color: var(--secondary);
+}
+
+.button-secondary:hover {
+    color: var(--background);
+    background: var(--secondary);
+}
+
+.button-teal {
+    background: transparent;
+    border: 1px solid var(--teal);
+    box-shadow: 0 0px 3px var(--teal-light);
+    color: var(--teal);
+}
+
+.button-teal:hover {
+    color: var(--background);
+    background: var(--teal);
+}
+
+.button-success {
+    background: transparent;
+    border: 1px solid var(--success);
+    box-shadow: 0 0px 3px var(--green-light);
+    color: var(--success);
+}
+
+.button-success:hover {
+    color: var(--background);
+    background: var(--success);
+}
+
+.button-warning {
+    background: transparent;
+    border: 1px solid var(--warning);
+    box-shadow: 0 0px 3px var(--yellow-light);
+    color: var(--warning);
+}
+
+.button-warning:hover {
+    color: var(--background);
+    background: var(--warning);
+}
+
+.button-error {
+    background: transparent;
+    border: 1px solid var(--error);
+    box-shadow: 0 0px 3px var(--red-light);
+    color: var(--error);
+}
+
+.button-error:hover {
+    color: var(--background);
+    background: var(--error);
+}
+
+.input {
+    border: 1px solid var(--highlight);
+    border-radius: 8px;
+    box-shadow: 0 0px 3px var(--highlight-shadow);
+    filter: brightness(90%);
+    outline: none;
+    outline-width: 0;
+}
+
+.input-primary {
+    border: 1px solid var(--primary);
+    box-shadow: 0 0px 3px var(--primary-light);
+}
+
+.input-secondary {
+    border: 1px solid var(--secondary);
+    box-shadow: 0 0px 3px var(--secondary-light);
+}
+
+.input-teal {
+    border: 1px solid var(--teal);
+    box-shadow: 0 0px 3px var(--teal-light);
+}
+
+.input-success {
+    border: 1px solid var(--success);
+    box-shadow: 0 0px 3px var(--green-light);
+}
+
+.input-warning {
+    border: 1px solid var(--warning);
+    box-shadow: 0 0px 3px var(--yellow-light);
+}
+
+.input-error {
+    border: 1px solid var(--error);
+    box-shadow: 0 0px 3px var(--red-light);
+}
+/* Make scrollbar invisible */
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Styled scrollbar fallback for browsers that require it */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--highlight);
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}

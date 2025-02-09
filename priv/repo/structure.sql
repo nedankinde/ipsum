@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS "schema_migrations" ("version" INTEGER PRIMARY KEY, "inserted_at" TEXT);
+CREATE TABLE IF NOT EXISTS "users" ("id" TEXT PRIMARY KEY, "email" TEXT NOT NULL COLLATE NOCASE, "hashed_password" TEXT NOT NULL, "confirmed_at" TEXT, "inserted_at" TEXT NOT NULL, "updated_at" TEXT NOT NULL);
+CREATE UNIQUE INDEX "users_email_index" ON "users" ("email");
+CREATE TABLE IF NOT EXISTS "users_tokens" ("id" TEXT PRIMARY KEY, "user_id" TEXT NOT NULL CONSTRAINT "users_tokens_user_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "token" BLOB NOT NULL, "context" TEXT NOT NULL, "sent_to" TEXT, "inserted_at" TEXT NOT NULL);
+CREATE INDEX "users_tokens_user_id_index" ON "users_tokens" ("user_id");
+CREATE UNIQUE INDEX "users_tokens_context_token_index" ON "users_tokens" ("context", "token");
+CREATE TABLE IF NOT EXISTS "posts" ("id" TEXT PRIMARY KEY, "body" TEXT, "user_id" INTEGER CONSTRAINT "posts_user_id_fkey" REFERENCES "users"("id"), "inserted_at" TEXT NOT NULL, "updated_at" TEXT NOT NULL);
+CREATE INDEX "posts_user_id_index" ON "posts" ("user_id");
+CREATE TABLE IF NOT EXISTS "chats" ("id" TEXT PRIMARY KEY, "user_1_id" TEXT NOT NULL CONSTRAINT "chats_user_1_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "user_2_id" TEXT NOT NULL CONSTRAINT "chats_user_2_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "inserted_at" TEXT NOT NULL, "updated_at" TEXT NOT NULL);
+CREATE UNIQUE INDEX "chats_user_1_id_user_2_id_index" ON "chats" ("user_1_id", "user_2_id");
+CREATE TABLE IF NOT EXISTS "messages" ("id" TEXT PRIMARY KEY, "content" TEXT NOT NULL, "user_id" TEXT NOT NULL CONSTRAINT "messages_user_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "chat_id" TEXT NOT NULL CONSTRAINT "messages_chat_id_fkey" REFERENCES "chats"("id") ON DELETE CASCADE, "inserted_at" TEXT NOT NULL, "updated_at" TEXT NOT NULL);
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE IF NOT EXISTS "follow" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "user_1_id" TEXT NOT NULL CONSTRAINT "follow_user_1_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "user_2_id" TEXT NOT NULL CONSTRAINT "follow_user_2_id_fkey" REFERENCES "users"("id") ON DELETE CASCADE, "inserted_at" TEXT NOT NULL, "updated_at" TEXT NOT NULL);
+INSERT INTO schema_migrations VALUES(20250204125218,'2025-02-05T04:35:48');
+INSERT INTO schema_migrations VALUES(20250204133222,'2025-02-05T04:35:48');
+INSERT INTO schema_migrations VALUES(20250205022611,'2025-02-05T04:35:48');
+INSERT INTO schema_migrations VALUES(20250205022707,'2025-02-05T04:57:52');
+INSERT INTO schema_migrations VALUES(20250205065606,'2025-02-05T07:24:13');

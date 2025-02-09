@@ -1,0 +1,7 @@
+<.live_component module={Post} id={@post.id} post={@post} current_user={@current_user} />
+
+<div :for={comment <- @post.comments}>
+  <div class="card py-6 px-10">
+    <h1><b class="truncate w-36">{comment.user_id}</b> said <b>{comment.content}</b></h1>
+  </div>
+</div>
