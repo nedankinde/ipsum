@@ -1,3 +1,3 @@
 # Ipsum
 
-Twitter clone make with phoenix live view
+Twitter clone made with phoenix liveview
